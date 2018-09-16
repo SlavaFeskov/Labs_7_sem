@@ -47,7 +47,6 @@ namespace Lab_2
                 var converter = TypeDescriptor.GetConverter(typeof(T));
                 if (converter != null)
                 {
-                    // Cast ConvertFromString(string text) : object to (T)
                     return (T)converter.ConvertFromString(ContentText);
                 }
                 return default(T);
