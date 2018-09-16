@@ -5,55 +5,34 @@ namespace Lab_2
 {
     public static class DataProvider
     {
-        private static List<double> rRSequence;
-        private static List<List<double>> sequences;
 
         public static List<double> GetRrSequence(long? amount = null, long? r0 = null, long? a = null, long? m = null)
         {
-            if (rRSequence != null) return rRSequence;
+            List<double> sequence;
             if (r0.HasValue && a.HasValue && m.HasValue)
             {
-                rRSequence = Generator.GenerateValues(r0.Value, amount ?? Configuration.GetAmount, a.Value, m.Value);
+                sequence = Generator.GenerateValues(r0.Value, amount ?? Configuration.GetAmount, a.Value, m.Value);
             }
             else
             {
                 var randomAttributes = Randomizer.GetThreeRandomValuesFromList();
-                rRSequence = Generator.GenerateValues(randomAttributes[0], amount ?? Configuration.GetAmount, randomAttributes[1], randomAttributes[2]);
+                sequence = Generator.GenerateValues(randomAttributes[0], amount ?? Configuration.GetAmount, randomAttributes[1], randomAttributes[2]);
             }            
-            return rRSequence;
+            return sequence;
         }
 
         public static List<List<double>> GetSequences(long amountOfSequences = 0)
         {
-            var realAmountOfSequences = amountOfSequences != 0 ? amountOfSequences : Configuration.GetAmountOfSequences; 
-            if (sequences != null)
+            var realAmountOfSequences = amountOfSequences != 0 ? amountOfSequences : Configuration.GetAmountOfSequences;
+
+            var result = new List<List<double>>();
+            for (int i = 0; i < realAmountOfSequences; i++)
             {
-                if (sequences.Count >= realAmountOfSequences)
-                {
-                    return sequences;
-                }
-
-                var result = new List<List<double>>();
-                for (int i = 0; i < realAmountOfSequences - sequences.Count; i++)
-                {
-                    var randomAttributes = Randomizer.GetThreeRandomValuesFromList();
-                    result.Add(GetRrSequence(r0: randomAttributes[0], a: randomAttributes[1], m: randomAttributes[2]));
-                }
-
-                sequences.AddRange(result);
-                return sequences;
+                var randomAttributes = Randomizer.GetThreeRandomValuesFromList();
+                result.Add(GetRrSequence(r0: randomAttributes[0], a: randomAttributes[1], m: randomAttributes[2]));
             }
-            else
-            {
-                var result = new List<List<double>>();
-                for (int i = 0; i < realAmountOfSequences; i++)
-                {
-                    var randomAttributes = Randomizer.GetThreeRandomValuesFromList();
-                    result.Add(GetRrSequence(realAmountOfSequences, r0: randomAttributes[0], a: randomAttributes[1], m: randomAttributes[2]));
-                }
 
-                return sequences = result;
-            }          
+            return result;
         }
     }
 }

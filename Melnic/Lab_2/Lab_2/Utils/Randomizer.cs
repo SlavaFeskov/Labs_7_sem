@@ -22,7 +22,7 @@ namespace Lab_2.Utils
             var indexesOfValues = new List<int>();
             for (int i = 0; i < 3; i++)
             {
-                var index = (int) ((random.Next(0, 36) * DateTime.Now.Millisecond) % 37);
+                var index = (int) ((random.Next(0, 36) * DateTime.Now.Millisecond) % 36);
                 indexesOfValues.Add(index);
             }
             indexesOfValues.Sort();
