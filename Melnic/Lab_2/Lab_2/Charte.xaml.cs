@@ -34,26 +34,7 @@ namespace ME1
                     Title = "Distribution density ",
                     Values = new ChartValues<ObservablePoint>()
                     {
-                        new ObservablePoint(0.025 + 0.05 * 0, 0.5 ),
-                        new ObservablePoint(0.025 + 0.05 * 1, 0.5 ),
-                        new ObservablePoint(0.025 + 0.05 * 2, 0.5 ),
-                        new ObservablePoint(0.025 + 0.05 * 3, 0.5 ),
-                        new ObservablePoint(0.025 + 0.05 * 4, 0.5 ),
-                        new ObservablePoint(0.025 + 0.05 * 5, 0.5 ),
-                        new ObservablePoint(0.025 + 0.05 * 6, 0.5 ),
-                        new ObservablePoint(0.025 + 0.05 * 7, 0.5 ),
-                        new ObservablePoint(0.025 + 0.05 * 8, 0.5 ),
-                        new ObservablePoint(0.025 + 0.05 * 9, 0.5 ),
-                        new ObservablePoint(0.025 + 0.05 * 10, 0.5 ),
-                        new ObservablePoint(0.025 + 0.05 * 11, 0.5 ),
-                        new ObservablePoint(0.025 + 0.05 * 12, 0.5 ),
-                        new ObservablePoint(0.025 + 0.05 * 13, 0.5 ),
-                        new ObservablePoint(0.025 + 0.05 * 14, 0.5 ),
-                        new ObservablePoint(0.025 + 0.05 * 15, 0.5 ),
-                        new ObservablePoint(0.025 + 0.05 * 16, 0.5 ),
-                        new ObservablePoint(0.025 + 0.05 * 17, 0.5 ),
-                        new ObservablePoint(0.025 + 0.05 * 18, 0.5 ),
-                        new ObservablePoint(0.025 + 0.05 * 19, 0.5 ),
+                     
                     }
                }            
             };

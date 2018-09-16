@@ -113,6 +113,11 @@ namespace Lab_2
         {
             HideAllEdit();
             ResetAllEdit();
+            Charte.SetValues(new List<double>());
+            lbDispersion.Content = "";
+            lbSigma.Content = "";
+            lbMathExpectation.Content = "";
+
         }
 
         private void EventSelect(object sender, RoutedEventArgs e)
