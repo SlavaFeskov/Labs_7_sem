@@ -22,7 +22,7 @@ namespace Lab_2.Distributions
             for (int i = 0; i < Configuration.GetAmountOfSequences; i++)
             {
                 var sumOfRRi = DataProvider.GetSequences().Sum(el => el[i]);
-                result.Add(MathExp + Sigma * Math.Sqrt(Configuration.GetAmountOfSequences / 2) *
+                result.Add(MathExp + Sigma * Math.Sqrt(12 / Configuration.GetAmountOfSequences) *
                            (sumOfRRi - Configuration.GetAmountOfSequences / 2));
             }
 
