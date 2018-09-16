@@ -76,7 +76,7 @@ namespace ME1
             {
                 if (d > max) max = d;
             });
-            var step = ((float)(max - min) / 20);
+            var step = ((double)(max - min) / 20);
             for (int i = 0; i < 20; i++)
             {
                 double upValue = min + (i + 1) * step;

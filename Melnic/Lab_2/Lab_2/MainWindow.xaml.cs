@@ -133,7 +133,7 @@ namespace Lab_2
 
         private void GaussianSelect(object sender, RoutedEventArgs e)
         {
-            CurentDistribution = Distribution.SimpsonDistribution;
+            CurentDistribution = Distribution.GaussianDistribution;
             Reset();
             ShowEdits(2);
             SetString(edtNames, new List<string> { "mathExp",  "sigma" });
@@ -157,7 +157,7 @@ namespace Lab_2
 
         private void GammaSelect(object sender, RoutedEventArgs e)
         {
-            CurentDistribution = Distribution.ExponentialDistribution;
+            CurentDistribution = Distribution.GammaDistribution;
             Reset();
             ShowEdits(2);
             SetString(edtNames, new List<string> {"n", "lambda" });

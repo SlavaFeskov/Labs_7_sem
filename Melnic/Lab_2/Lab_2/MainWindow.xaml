@@ -16,7 +16,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <me1:Charte x:Name="Charte"></me1:Charte>
+        <me1:Charte x:Name="Charte" Grid.Row="1"></me1:Charte>
         <Border>
             <StackPanel Orientation="Horizontal">
                 <RadioButton GroupName="func" x:Name="RadioEvent" Content="Event" Checked="EventSelect"></RadioButton>
