@@ -19,11 +19,13 @@ namespace Lab_2.Distributions
         public override List<double> GetValues()
         {
             var result = new List<double>();
-            for (int i = 0; i < Configuration.GetAmountOfSequences; i++)
+            var amountOfSequences = 6;
+            var sequences = DataProvider.GetSequences(amountOfSequences);
+            for (int i = 0; i < Configuration.GetAmount; i++)
             {
-                var sumOfRRi = DataProvider.GetSequences().Sum(el => el[i]);
-                result.Add(MathExp + Sigma * Math.Sqrt(12 / Configuration.GetAmountOfSequences) *
-                           (sumOfRRi - Configuration.GetAmountOfSequences / 2));
+                var sumOfRRi = sequences.Sum(el => el[i]);
+                result.Add(MathExp + Sigma * Math.Sqrt(12 / amountOfSequences) *
+                           (sumOfRRi - amountOfSequences / 2));
             }
 
             return result;
