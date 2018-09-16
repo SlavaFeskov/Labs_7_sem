@@ -23,23 +23,27 @@ namespace ME1
     /// </summary>
     public partial class Charte : UserControl
     {
+        private double min = 1;
+        private double _step = 0.2;
+        public Func<double, string> XAxisLableormatter { get; set; }
         public Charte()
         {
             InitializeComponent();
-
+            DataContext = this;
+            XAxisLableormatter = value => $" { min + (value + 1) * _step + _step / 2:0.0#}";
             SeriesCollection = new SeriesCollection
             {
+
                 new ColumnSeries
                 {
                     Title = "Distribution density ",
                     Values = new ChartValues<ObservablePoint>()
                     {
-                     
+                      new ObservablePoint(0,1),
+                        new ObservablePoint(1,0)
                     }
                }            
             };
-            
-            DataContext = this;
         }
 
         public void SetValues(List<double> values)
@@ -47,7 +51,7 @@ namespace ME1
             
             SeriesCollection[0].Values.Clear();
             var v = new List<Tuple<double, double>>();
-            var min = double.MaxValue;
+            min = double.MaxValue;
             values.ForEach(d =>
             {
                 if (d < min) min = d;
@@ -57,11 +61,11 @@ namespace ME1
             {
                 if (d > max) max = d;
             });
-            var step = ((double)(max - min) / 20);
+            _step = ((max - min) / 20);
             for (int i = 0; i < 20; i++)
             {
-                double upValue = min + (i + 1) * step;
-                double downValue = min + i * step;
+                double upValue = min + (i + 1) * _step;
+                double downValue = min + i * _step;
                 float sum = 0;
                 values.ForEach(
                     d =>

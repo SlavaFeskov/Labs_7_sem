@@ -22,6 +22,7 @@ namespace Lab_2
     public delegate void VisibiltySetter(Visibility value);
     public partial class MainWindow : Window
     {
+        private List<double> _charteClearVlaues = new List<double>(new EvenDistribution(0,0).GetValues());
         public Distribution CurentDistribution { get; private set; }
         public List<StringSetter> edtNames { get; set; }
         public MainWindow()
@@ -113,7 +114,7 @@ namespace Lab_2
         {
             HideAllEdit();
             ResetAllEdit();
-            Charte.SetValues(new List<double>());
+            Charte.SetValues(_charteClearVlaues);
             lbDispersion.Content = "";
             lbSigma.Content = "";
             lbMathExpectation.Content = "";
