@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Lab_2.Utils;
 
 namespace Lab_2
 {
@@ -7,9 +8,19 @@ namespace Lab_2
         private static List<double> rRSequence;
         private static List<List<double>> sequences;
 
-        public static List<double> GetRrSequence(long? amount = null)
+        public static List<double> GetRrSequence(long? amount = null, long? r0 = null, long? a = null, long? m = null)
         {
-            return rRSequence ?? (rRSequence = Generator.GenerateValues(Configuration.GetA, amount ?? Configuration.GetAmount, Configuration.GetA, Configuration.GetM));
+            if (rRSequence != null) return rRSequence;
+            if (r0.HasValue && a.HasValue && m.HasValue)
+            {
+                rRSequence = Generator.GenerateValues(r0.Value, amount ?? Configuration.GetAmount, a.Value, m.Value);
+            }
+            else
+            {
+                var randomAttributes = Randomizer.GetThreeRandomValuesFromList();
+                rRSequence = Generator.GenerateValues(randomAttributes[0], amount ?? Configuration.GetAmount, randomAttributes[1], randomAttributes[2]);
+            }            
+            return rRSequence;
         }
 
         public static List<List<double>> GetSequences(long amountOfSequences = 0)
@@ -25,7 +36,8 @@ namespace Lab_2
                 var result = new List<List<double>>();
                 for (int i = 0; i < realAmountOfSequences - sequences.Count; i++)
                 {
-                    result.Add(GetRrSequence());
+                    var randomAttributes = Randomizer.GetThreeRandomValuesFromList();
+                    result.Add(GetRrSequence(r0: randomAttributes[0], a: randomAttributes[1], m: randomAttributes[2]));
                 }
 
                 sequences.AddRange(result);
@@ -36,7 +48,8 @@ namespace Lab_2
                 var result = new List<List<double>>();
                 for (int i = 0; i < realAmountOfSequences; i++)
                 {
-                    result.Add(GetRrSequence(realAmountOfSequences));
+                    var randomAttributes = Randomizer.GetThreeRandomValuesFromList();
+                    result.Add(GetRrSequence(realAmountOfSequences, r0: randomAttributes[0], a: randomAttributes[1], m: randomAttributes[2]));
                 }
 
                 return sequences = result;
