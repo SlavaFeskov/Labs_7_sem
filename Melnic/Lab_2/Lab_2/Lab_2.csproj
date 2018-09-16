@@ -69,6 +69,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Compile Include="Charte.xaml.cs">
+      <DependentUpon>Charte.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Exceptions\NotEnoughParamsException.cs" />
     <Compile Include="Model\AnalysisModel.cs" />
     <Compile Include="Distributions\BaseDistribution.cs" />

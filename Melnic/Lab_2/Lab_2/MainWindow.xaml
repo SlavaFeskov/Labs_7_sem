@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab_2"
+        xmlns:me1="clr-namespace:ME1"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
@@ -15,6 +16,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <me1:Charte x:Name="Charte"></me1:Charte>
         <Border>
             <StackPanel Orientation="Horizontal">
                 <RadioButton GroupName="func" x:Name="RadioEvent" Content="Event" Checked="EventSelect"></RadioButton>
@@ -31,6 +33,9 @@
                 <local:LabledEdit x:Name="Edit1"></local:LabledEdit>
                 <local:LabledEdit x:Name="Edit2"></local:LabledEdit>
                 <Button  Height="22" Width="100" Click="ButtonGenrate_OnClick">Enter</Button>
+                <Label x:Name="lbMathExpectation"></Label>
+                <Label x:Name="lbDispersion"></Label>
+                <Label x:Name="lbSigma"></Label>
             </StackPanel>
         </Border>
     </Grid>

@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows;
+using Lab_2.Distributions;
 
 namespace Lab_2
 {
@@ -75,7 +78,35 @@ namespace Lab_2
         }
         private void ButtonGenrate_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            BaseDistribution distribution;
+            switch (CurentDistribution)
+            {
+                case Distribution.EvenDistribution:
+                    distribution = new EvenDistribution(Edit0.GetContent<double>(), Edit1.GetContent<double>());
+                    break;
+                case Distribution.ExponentialDistribution:
+                    distribution = new ExponentialDistribution(Edit0.GetContent<double>());
+                    break;
+                case Distribution.GammaDistribution:
+                    distribution = new GammaDistribution(Edit0.GetContent<long>(), Edit1.GetContent<double>());
+                    break;
+                case Distribution.GaussianDistribution:
+                    distribution = new GaussianDistribution(Edit0.GetContent<double>(), Edit1.GetContent<double>());
+                    break;
+                case Distribution.SimpsonDistribution:
+                    distribution = new SimpsonDistribution(Edit0.GetContent<double>(), Edit1.GetContent<double>());
+                    break;
+                case Distribution.TriangleDistribution:
+                    distribution = new TriangleDistribution(Edit0.GetContent<double>(), Edit1.GetContent<double>(),Edit2.GetContent<bool>());
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            Charte.SetValues(distribution.GetValues());
+            var analiysis = distribution.GetMathAttributes();
+            lbDispersion.Content = $"Dispersion = {analiysis.Dispersion}";
+            lbSigma.Content = $"Sigma = {analiysis.Sigma}";
+            lbMathExpectation.Content = $"MathExpectation = {analiysis.MathExpectation}";
         }
 
         private void Reset()

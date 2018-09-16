@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
@@ -39,6 +40,31 @@ namespace Lab_2
         public static readonly DependencyProperty ContentTextProperty =
             DependencyProperty.Register("ContentText", typeof(string), typeof(LabledEdit));
 
+        public  T GetContent<T>()
+        {
+            try
+            {
+                var converter = TypeDescriptor.GetConverter(typeof(T));
+                if (converter != null)
+                {
+                    // Cast ConvertFromString(string text) : object to (T)
+                    return (T)converter.ConvertFromString(ContentText);
+                }
+                return default(T);
+            }
+            catch (NotSupportedException)
+            {
+                return default(T);
+            }
+        }
+        public bool ContenBool
+        {
+            get
+            {
+                bool.TryParse(ContentText, out var result);
+                return result;
+            }
+        }
         public string GetValue()
         {
             return TextBox.Text;
