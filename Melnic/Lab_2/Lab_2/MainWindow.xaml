@@ -7,6 +7,31 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Border>
+            <StackPanel Orientation="Horizontal">
+                <RadioButton GroupName="func" x:Name="RadioEvent" Content="Event" Checked="EventSelect"></RadioButton>
+                <RadioButton GroupName="func" Content="Exponential" Checked="ExponentialSelect"></RadioButton>
+                <RadioButton GroupName="func" Content="Gamma" Checked="GammaSelect"></RadioButton>
+                <RadioButton GroupName="func" Content="Gaussian" Checked="GaussianSelect"></RadioButton>
+                <RadioButton GroupName="func" Content="Simpson" Checked="SimpsonSelect"></RadioButton>
+                <RadioButton GroupName="func" Content="Triangle" Checked="TriangleSelect"></RadioButton>
+            </StackPanel>
+        </Border>
+        <Border Grid.Column="0" Grid.Row="2" BorderBrush="#FF817C7C">
+            <StackPanel Orientation="Horizontal">
+                <local:LabledEdit x:Name="Edit0"></local:LabledEdit>
+                <local:LabledEdit x:Name="Edit1"></local:LabledEdit>
+                <local:LabledEdit x:Name="Edit2"></local:LabledEdit>
+                <Button  Height="22" Width="100" Click="ButtonGenrate_OnClick">Enter</Button>
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>
