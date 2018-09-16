@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,6 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Exceptions\NotEnoughParamsException.cs" />
+    <Compile Include="Model\AnalysisModel.cs" />
+    <Compile Include="Distributions\BaseDistribution.cs" />
+    <Compile Include="Distributions\SimpsonDistribution.cs" />
+    <Compile Include="Distributions\TriangleDistribution.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -62,6 +68,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Configuration.cs" />
+    <Compile Include="DataProvider.cs" />
+    <Compile Include="Distributions\EvenDistribution.cs" />
+    <Compile Include="Distributions\ExponentialDistribution.cs" />
+    <Compile Include="Distributions\GammaDistribution.cs" />
+    <Compile Include="Distributions\GaussianDistribution.cs" />
+    <Compile Include="Generator.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
