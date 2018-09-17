@@ -20,7 +20,7 @@ namespace COS2WPF
         {
             double sum = 0;
             values.ForEach(d => sum+= d*d);
-            var MSV = Math.Sqrt(sum / values.Count);
+            var MSV = Math.Sqrt(sum / (values.Count + 1));
             if (Math.Abs(MSV) < 0.0001)
             {
                 double sumSqr = 0;
@@ -41,15 +41,10 @@ namespace COS2WPF
         {
             var ret = new AnalyzatorResult();
             var allSequences = Generator.GenerateAllSequences(DataTable.K, DataTable.N, fi);
-            var MSVs = allSequences.Select(GetMSV);
+            var MSVs = allSequences.Select(GetMSV);            
             var MSVErrors = MSVs.Select(d => 0.707 - d);
-            var Asub = allSequences.Select(delegate(List<double> list)
-            {
-                double sum = 0;
-                sum = list.Sum();
-                return sum /list.Count;
-            });
-            var MSVAs = Asub.Select(complex => 1 - complex);
+            var Asub = allSequences.Select(sequence => sequence.Select(Math.Abs).Max());
+            var MSVAs = Asub.Select(complex => 1 - complex);    
             ret.MSVAs = MSVAs.ToList();
             ret.MSVErrors = MSVErrors.ToList();
             ret.Start = DataTable.K;

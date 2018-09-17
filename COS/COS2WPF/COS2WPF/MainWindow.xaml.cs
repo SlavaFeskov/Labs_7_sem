@@ -22,8 +22,8 @@ namespace MSM1
         public MainWindow()
         {
             InitializeComponent();
-            ChartLeft.NameLable = "Полигармоничная функция";
-            ChartRigth.NameLable = "Гармоничная функция";
+            ChartLeft.NameLable = "Погрешность 1";
+            ChartRigth.NameLable = "Погрешность 2";
 
         }
 
