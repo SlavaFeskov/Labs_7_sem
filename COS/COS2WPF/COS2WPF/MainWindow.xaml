@@ -1,0 +1,28 @@
+﻿<Window x:Class="MSM1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MSM1"
+        xmlns:cos2Wpf="clr-namespace:COS2WPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="899.05">
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400*" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="400*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+        </Grid.RowDefinitions>
+        <GridSplitter Grid.Column="1" Grid.Row="0" Background="Black" Grid.RowSpan="1" ResizeDirection="Columns" HorizontalAlignment="Stretch" ></GridSplitter>
+        <cos2Wpf:AnalogChart Grid.Row="0"  x:Name="ChartLeft" Margin="0,0,10,0" Grid.Column="0" />
+        <cos2Wpf:AnalogChart Grid.Row="0"  x:Name="ChartRigth" Margin="10,0,0,0" Grid.Column="2" />
+        <StackPanel Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <RadioButton GroupName="func" Content="No fi" Checked="NoFiChecked"  IsChecked="True" Padding="12,0,10,0"></RadioButton>
+            <RadioButton GroupName="func" Content="With fi" Checked="WithFiChecked" Padding="12,0,10,0"></RadioButton>
+        </StackPanel>
+    </Grid>
+</Window>
