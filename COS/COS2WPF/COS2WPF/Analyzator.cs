@@ -43,7 +43,7 @@ namespace COS2WPF
             var allSequences = Generator.GenerateAllSequences(DataTable.K, DataTable.N, fi);
             var MSVs = allSequences.Select(GetMSV);            
             var MSVErrors = MSVs.Select(d => 0.707 - d);
-            var Asub = allSequences.Select(sequence => sequence.Select(Math.Abs).Max());
+            var Asub = allSequences.Select(sequence => sequence.Select(Math.Abs).Max()).ToList();
             var MSVAs = Asub.Select(complex => 1 - complex);    
             ret.MSVAs = MSVAs.ToList();
             ret.MSVErrors = MSVErrors.ToList();
