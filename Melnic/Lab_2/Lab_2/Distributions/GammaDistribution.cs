@@ -32,13 +32,13 @@ namespace Lab_2.Distributions
             return result;
         }
 
-        public override AnalysisModel GetMathAttributes()
-        {
-            return new AnalysisModel
-            {
-                MathExpectation = N / Lambda,
-                Dispersion = N / Math.Pow(Lambda, 2)
-            };
-        }
+        //public override AnalysisModel GetMathAttributes(List<double> values)
+        //{
+        //    return new AnalysisModel
+        //    {
+        //        MathExpectation = N / Lambda,
+        //        Dispersion = N / Math.Pow(Lambda, 2)
+        //    };
+        //}
     }
 }

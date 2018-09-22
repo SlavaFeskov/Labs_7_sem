@@ -103,8 +103,10 @@ namespace Lab_2
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            Charte.SetValues(distribution.GetValues());
-            var analiysis = distribution.GetMathAttributes();
+
+            var values = distribution.GetValues();
+            Charte.SetValues(values);
+            var analiysis = distribution.GetMathAttributes(values);
             lbDispersion.Content = $"Dispersion = {analiysis.Dispersion}";
             lbSigma.Content = $"Sigma = {analiysis.Sigma}";
             lbMathExpectation.Content = $"MathExpectation = {analiysis.MathExpectation}";

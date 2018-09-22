@@ -28,13 +28,13 @@ namespace Lab_2.Distributions
             return result;
         }
 
-        public override AnalysisModel GetMathAttributes()
-        {
-            return new AnalysisModel
-            {
-                MathExpectation = 2 / (3 * Math.Pow(B - A, 2)) * (Math.Pow(A, 3) + Math.Pow(B, 3) - (A + B) / 4),
-                Dispersion = Math.Pow(B - A, 2) / 24
-            };
-        }
+        //public override AnalysisModel GetMathAttributes(List<double> values)
+        //{
+        //    return new AnalysisModel
+        //    {
+        //        MathExpectation = 2 / (3 * Math.Pow(B - A, 2)) * (Math.Pow(A, 3) + Math.Pow(B, 3) - (A + B) / 4),
+        //        Dispersion = Math.Pow(B - A, 2) / 24
+        //    };
+        //}
     }
 }

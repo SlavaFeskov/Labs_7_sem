@@ -19,13 +19,13 @@ namespace Lab_2.Distributions
             return DataProvider.GetRrSequence().Select(el => -1 / Lambda * Math.Log(el, Math.E)).ToList();
         }
 
-        public override AnalysisModel GetMathAttributes()
-        {
-            return new AnalysisModel
-            {
-                MathExpectation = 1 / Lambda,
-                Dispersion = 1 / Math.Pow(Lambda, 2)
-            };
-        }
+        //public override AnalysisModel GetMathAttributes(List<double> values)
+        //{
+        //    return new AnalysisModel
+        //    {
+        //        MathExpectation = 1 / Lambda,
+        //        Dispersion = 1 / Math.Pow(Lambda, 2)
+        //    };
+        //}
     }
 }

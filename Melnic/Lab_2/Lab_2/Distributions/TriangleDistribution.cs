@@ -41,9 +41,9 @@ namespace Lab_2.Distributions
             return result;
         }
 
-        public override AnalysisModel GetMathAttributes()
-        {
-            return new SimpsonDistribution(A, B).GetMathAttributes();
-        }
+        //public override AnalysisModel GetMathAttributes(List<double> values)
+        //{
+        //    return new SimpsonDistribution(A, B).GetMathAttributes(values);
+        //}
     }
 }

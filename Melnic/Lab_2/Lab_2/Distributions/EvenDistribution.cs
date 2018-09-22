@@ -20,14 +20,5 @@ namespace Lab_2.Distributions
         {
             return DataProvider.GetRrSequence().Select(el => A + (B - A) * el).ToList();
         }
-
-        public override AnalysisModel GetMathAttributes()
-        {
-            return new AnalysisModel
-            {
-                MathExpectation = (A + B) / 2,
-                Dispersion = Math.Pow(B - A, 2) / 12
-            };
-        }
     }
 }
