@@ -1,0 +1,57 @@
+﻿@model List<Bank_System.Models.ClientModel>
+
+@{
+    ViewBag.Title = "Clients";
+    Layout = "_Layout";
+}
+
+<h2>Clients</h2>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Second name</th>
+        <th>Middle name</th>
+        <th>Birth date</th>
+        <th>Sex</th>
+        <th>Id number</th>
+        <th>Birth place</th>
+        <th>Fact address</th>
+        <th>Home number</th>
+        <th>Work number</th>
+        <th>E-mail</th>
+        <th>Place of residence</th>
+        <th>Pensioner</th>
+        <th>Monthly income</th>
+        <th>War bound</th>
+        <th>Marital status</th>
+        <th>City</th>
+        <th>Disability</th>
+        <th>Citizenship</th>        
+    </tr>
+</table>
+@{
+    foreach (var client in Model)
+    {
+        <tr>
+            <td>@client.Name</td>
+            <td>@client.SecondName</td>
+            <td>@client.MiddleName</td>
+            <td>@client.BirthDate.ToString("dd-MM-YYYY")</td>
+            <td>@client.Sex</td>
+            <td>@client.IdNumber</td>
+            <td>@client.BirthPlace</td>
+            <td>@client.AddressFact</td>
+            <td>@client.HomeNumber</td>
+            <td>@client.WorkNumber</td>
+            <td>@client.EMail</td>
+            <td>@client.Address</td>
+            <td>@Html.CheckBox("pensioner", new { disabled = true, value = client.Pensioner })</td>
+            <td>$@client.MonthlyIncome.ToString("F")</td>
+            <td>@Html.CheckBox("war_bound", new { disabled = true, value = client.WarBound })</td>
+            <td>@client.MaritalStatus.Name</td>
+            <td>@client.City.Name</td>
+            <td>@client.Disability.Name</td>
+            <td>@client.Citizenship.Name</td>
+        </tr>
+    }
+}
