@@ -166,13 +166,25 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Db\ClientManager\ClientDbManager.cs" />
+    <Compile Include="Db\AllManagers\CitizenshipDbManager.cs" />
+    <Compile Include="Db\AllManagers\CityDbManager.cs" />
+    <Compile Include="Db\AllManagers\ClientDbManager.cs" />
+    <Compile Include="Db\AllManagers\DisabilityDbManager.cs" />
+    <Compile Include="Db\AllManagers\MaritalStatusesDbManager.cs" />
+    <Compile Include="Db\AllManagers\PassportDbManager.cs" />
     <Compile Include="Db\DbManager.cs" />
+    <Compile Include="Db\BaseDbManager.cs" />
     <Compile Include="Domain\DbModels\ClientDbModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="MapProfiles\CitizenshipMapProfile.cs" />
+    <Compile Include="MapProfiles\CityMapProfile.cs" />
     <Compile Include="MapProfiles\ClientMapProfile.cs" />
+    <Compile Include="MapProfiles\DisabilityMapProfile.cs" />
+    <Compile Include="MapProfiles\MainMapper.cs" />
+    <Compile Include="MapProfiles\MaritalStatusMapProfile.cs" />
+    <Compile Include="MapProfiles\PassportMapProfile.cs" />
     <Compile Include="Models\CitizenshipModel.cs" />
     <Compile Include="Models\CityModel.cs" />
     <Compile Include="Models\DisabilityModel.cs" />
@@ -181,8 +193,12 @@
     <Compile Include="Models\PassportModel.cs" />
     <Compile Include="Models\Sex.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\Attributes\UpdatableAttribute.cs" />
+    <Compile Include="Utils\StringExtension.cs" />
+    <Compile Include="ViewModels\ClientsDataViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-spacelab.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -222,10 +238,10 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Clients\Index.cshtml" />
+    <Content Include="Views\Clients\Form.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

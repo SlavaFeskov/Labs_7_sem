@@ -1,0 +1,124 @@
+﻿@using Bank_System.Models
+@model Bank_System.ViewModels.ClientsDataViewModel
+
+@{
+    ViewBag.Title = Model.Client?.IdNumber ?? "New client";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm("Save", "Clients", FormMethod.Post, new { display = "inline-block" }))
+{
+    <div class="card border-primary mb-3" style="width: 40rem;">
+        <div class="card-header">Client Info</div>   
+        <div class="card-body">
+            @Html.Hidden("Client.Id", Model.Client?.Id)
+            @Html.Hidden("Client.PassportId", 2)
+            <div class="form-group">
+                @Html.LabelFor(m => m.Client.Name)
+                @Html.TextBoxFor(m => m.Client.Name, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Client.SecondName)
+                @Html.TextBoxFor(m => m.Client.SecondName, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Client.MiddleName)
+                @Html.TextBoxFor(m => m.Client.MiddleName, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Client.BirthDate)
+                @Html.TextBoxFor(m => m.Client.BirthDate, "{0:dd-MM-yyyy}", new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Client.Sex)
+                @Html.DropDownListFor(d => d.Client.Sex, new SelectList(new List<string> { Sex.Female.ToString(), Sex.Male.ToString() }), "", new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Client.IdNumber)
+                @Html.TextBoxFor(m => m.Client.IdNumber, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Client.BirthPlace)
+                @Html.TextBoxFor(m => m.Client.BirthPlace, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Client.AddressFact)
+                @Html.TextBoxFor(m => m.Client.AddressFact, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Client.HomeNumber)
+                @Html.TextBoxFor(m => m.Client.HomeNumber, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Client.WorkNumber)
+                @Html.TextBoxFor(m => m.Client.WorkNumber, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Client.EMail)
+                @Html.TextBoxFor(m => m.Client.EMail, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Client.Address)
+                @Html.TextBoxFor(m => m.Client.Address, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Client.MaritalStatusId)
+                @Html.DropDownListFor(m => m.Client.MaritalStatusId, new SelectList(Model.MaritalStatuses, "Id", "Name"), "Select marital status", new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Client.CityId)
+                @Html.DropDownListFor(m => m.Client.CityId, new SelectList(Model.Cities, "Id", "Name"), "Select city", new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Client.DisabilityId)
+                @Html.DropDownListFor(m => m.Client.DisabilityId, new SelectList(Model.Disabilities, "Id", "Name"), "Select disability", new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Client.CitizenshipId)
+                @Html.DropDownListFor(m => m.Client.CitizenshipId, new SelectList(Model.Citizenships, "Id", "Name"), "Select citizenship", new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Client.MonthlyIncome)
+                @Html.TextBoxFor(m => m.Client.MonthlyIncome, new { @class = "form-control" })
+            </div>
+            <div class="checkbox">
+                <label>
+                    @Html.CheckBoxFor(m => m.Client.Pensioner) Pensioner
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    @Html.CheckBoxFor(m => m.Client.WarBound) War bound
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="card border-primary mb-3" style="width: 30rem;">
+        <div class="card-header">Passport Info</div>
+        <div class="card-body">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Passport.Number)
+                @Html.TextBoxFor(m => m.Passport.Number, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Passport.Series)
+                @Html.TextBoxFor(m => m.Passport.Series, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Passport.ReleaseDate)
+                @Html.TextBoxFor(m => m.Passport.ReleaseDate, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Passport.WasGivenBy)
+                @Html.TextBoxFor(m => m.Passport.WasGivenBy, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <div display="inline">
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>    
+}
+
+

@@ -2,7 +2,7 @@
 using System.Data;
 using System.Data.Odbc;
 
-namespace test_app
+namespace Bank_System.Db
 {
     public class DbManager
     {
@@ -44,11 +44,22 @@ namespace test_app
                 while (reader.Read())
                 {
                     var row = new object[reader.FieldCount];
-                    reader.GetValues(row);
+                    reader.GetValues(row);                    
                     result.Add(row);
                 }
-
+                
                 return result;
+            }
+
+            return null;
+        }
+
+        public object[] GetLastRowAdded(string tableName)
+        {
+            if (OdbcConnection.State == ConnectionState.Open)
+            {
+                var lastId = SendQuery($"select Max(Id) from {tableName}")[0][0].ToString();                
+                return SendQuery($"select * from {tableName} where Id='{lastId}'")[0];
             }
 
             return null;
