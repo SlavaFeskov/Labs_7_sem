@@ -21,7 +21,7 @@ namespace Bank_System.Db.AllManagers
                 client.Disability = disabilities.Single(d => d.Id == client.DisabilityId);
                 client.Passport = passports.Single(p => p.Id == client.PassportId);
                 client.Citizenship = citizenships.Single(c => c.Id == client.CitizenshipId);
-            }
+            }            
             return clients;
         }
 

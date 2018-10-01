@@ -45,6 +45,8 @@ namespace Bank_System.Controllers
             }
 
             clientsData.Client = client;
+            clientsData.Passport = _passportDbManager.GetEntities("Passport")
+                .SingleOrDefault(p => p.Id == client.PassportId);
             return View(clientsData);
         }
         
