@@ -4,7 +4,7 @@ namespace Lab_2
 {
     public static class Generator
     {
-        public static List<List<double>> GenerateAllSequences(int K, int N,double fi)
+        public static List<List<double>> GenerateAllSequences(int K, int N, double fi)
         {
             var result = new List<List<double>>();
             for (int M = K; M <= 2 * N; M++)

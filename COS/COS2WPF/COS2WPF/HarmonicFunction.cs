@@ -11,6 +11,7 @@ namespace Lab_2
             for (int n = 0; n < M; n++)
             {
                 result.Add(Math.Sin(2 * Math.PI * n / N + fi));
+
             }
             return result;
         }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Lab_2;
 namespace COS2WPF
 {
@@ -43,7 +44,16 @@ namespace COS2WPF
             var allSequences = Generator.GenerateAllSequences(DataTable.K, DataTable.N, fi);
             var MSVs = allSequences.Select(GetMSV);            
             var MSVErrors = MSVs.Select(d => 0.707 - d);
-            var Asub = allSequences.Select(sequence => sequence.Select(Math.Abs).Max()).ToList();
+            List<List<Point>> points = new List<List<Point>>();
+            for (int l = 0; l < allSequences.Count; l++)
+            {
+                points.Add(new List<Point>());
+                for (int i = 0; i < allSequences[l].Count; i++)
+                {
+                    points[l].Add(new Point(i, allSequences[l][i]));
+                }
+            }
+            var Asub = points.Select(pl => GetAmpl(pl, pl.Count)).ToList();
             var MSVAs = Asub.Select(complex => 1 - complex);    
             ret.MSVAs = MSVAs.ToList();
             ret.MSVErrors = MSVErrors.ToList();
@@ -58,6 +68,29 @@ namespace COS2WPF
         public static AnalyzatorResult AlalyzeWithFi()
         {
             return Analyze(DataTable.Fi);
+        }
+
+        private static double GetFurSin(List<Point> points, int M)
+        {
+            double aSin = 0;
+            foreach (var point in points)
+            {
+                aSin += point.Y * Math.Sin(2 * Math.PI * point.X / M);
+            }
+            return 2 * aSin / M;
+        }
+        private static double GetFurCos(List<Point> points, int M)
+        {
+            double aCos = 0;
+            foreach (var point in points)
+            {
+                aCos += point.Y * Math.Cos(2 * Math.PI * point.X / M);
+            }
+            return 2 * aCos / M;
+        }
+        private static double GetAmpl(List<Point> points, int M)
+        {
+            return Math.Sqrt(Math.Pow(GetFurSin(points, M), 2) + Math.Pow(GetFurCos(points, M), 2));
         }
     }
 }
